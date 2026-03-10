@@ -10,7 +10,7 @@ let
   version = "1.1.1";
   src = fetchurl {
     url = "https://github.com/teamfinalmouse/xpanel-desktop-public/releases/download/v${version}/xpanel-desktop-${version}.AppImage";
-    sha256 = "sha256-cmZX6E1Z2RdrB+uDJWeBm3woyVArmLl2+NvWhyEB3BI=";
+    sha256 = "sha256-gkMYpZH10VGdRnaag3QrQZSKP1ay2FXhAyrhxkBO08c=";
   };
 in
 
