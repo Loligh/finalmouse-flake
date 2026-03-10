@@ -26,9 +26,6 @@ appimageTools.wrapType2 {
     ''
       wrapProgram $out/bin/xpanel \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
-
-      substituteInPlace $out/share/applications/xpanel.desktop \
-        --replace-fail 'Exec=AppRun --no-sandbox' 'Exec=xpanel'
     '';
 
   profile = ''
