@@ -19,24 +19,6 @@ appimageTools.wrapType2 {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  extraInstallCommands =
-    let
-      contents = appimageTools.extract { inherit pname version src; };
-    in
-    ''
-      wrapProgram $out/bin/xpanel \
-        --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
-
-      install -Dm444 ${contents}/xpanel.desktop -t $out/share/applications
-      install -Dm444 ${contents}/xpanel.png -t $out/share/icons/hicolor/1024x1024/apps
-      substituteInPlace $out/share/applications/xpanel.desktop \
-        --replace-fail 'Exec=AppRun --no-sandbox' 'Exec=xpanel'
-    '';
-
-  profile = ''
-    export LC_ALL=C.UTF-8
-  '';
-
   extraPkgs =
     pkgs: with pkgs; [
       libxshmfence
