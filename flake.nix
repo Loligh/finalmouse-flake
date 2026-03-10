@@ -11,8 +11,8 @@
     in
     {
       packages.${system} = {
-        xpanel = import ./packages/xpanel/packages.nix { inherit pkgs; };
-        finalmouse-udev-rules = import ./packages/finalmouse-udev-rules/packages.nix { inherit pkgs; };
+        xpanel = import ./packages/xpanel/package.nix { inherit pkgs; };
+        finalmouse-udev-rules = import ./packages/finalmouse-udev-rules/package.nix { inherit pkgs; };
       };
 
       nixosModules.hardware.finalmouse = ./modules/finalmouse.nix;
