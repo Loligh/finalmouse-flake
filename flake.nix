@@ -11,8 +11,18 @@
     in
     {
       packages.${system} = {
-        xpanel = import ./packages/xpanel/package.nix { inherit pkgs; };
-        finalmouse-udev-rules = import ./packages/finalmouse-udev-rules/package.nix { inherit pkgs; };
+        xpanel = import ./packages/xpanel/package.nix {
+          appimageTools = pkgs.appimageTools;
+          fetchurl = pkgs.fetchurl;
+          makeWrapper = pkgs.makeWrapper;
+          lib = pkgs.lib;
+        };
+        finalmouse-udev-rules = import ./packages/finalmouse-udev-rules/package.nix {
+          stdenv = pkgs.stdenv;
+          fetchurl = pkgs.fetchurl;
+          udevCheckHook = pkgs.udevCheckHook;
+          lib = pkgs.lib;
+        };
       };
 
       nixosModules.hardware.finalmouse = ./modules/finalmouse.nix;
