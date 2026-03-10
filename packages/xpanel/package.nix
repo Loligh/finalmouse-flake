@@ -6,7 +6,7 @@
 }:
 
 let
-  pname = "Xpanel";
+  pname = "xpanel";
   version = "1.1.1";
   src = fetchurl {
     url = "https://github.com/teamfinalmouse/xpanel-desktop-public/releases/download/v${version}/xpanel-desktop-${version}.AppImage";
